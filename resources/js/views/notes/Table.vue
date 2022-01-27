@@ -8,6 +8,7 @@
                         <th>Title</th>
                         <th>Description</th>
                         <th>Published</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,6 +24,15 @@
                         </td>
                         <td>{{ note.subject }}</td>
                         <td>{{ note.published }}</td>
+                        <td>
+                            <router-link
+                                :to="{
+                                    name: 'notes.edit',
+                                    params: { noteSlug: note.slug },
+                                }"
+                                >Edit</router-link
+                            >
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -39,9 +49,14 @@ export default {
     },
 
     mounted() {
-        axios.get("/api/notes").then((response) => {
-            this.notes = response.data.data;
-        });
+        this.getNotes();
+    },
+
+    methods: {
+        async getNotes() {
+            let { data } = await axios.get("/api/notes");
+            this.notes = data.data;
+        },
     },
 };
 </script>

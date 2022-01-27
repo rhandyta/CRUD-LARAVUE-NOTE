@@ -21,11 +21,10 @@ export default {
 
     methods: {
         async getNote() {
-            let response = await axios.get(
+            let { data } = await axios.get(
                 "/api/notes/" + this.$route.params.noteSlug
             );
-            this.note = response.data.data;
-            console.log(this.note);
+            this.note = data.data;
         },
     },
 };

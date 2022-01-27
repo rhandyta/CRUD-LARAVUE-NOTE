@@ -5,6 +5,7 @@ import Contact from "../views/Contact.vue";
 import NewNote from "../views/notes/Create.vue";
 import tableOfNote from "../views/notes/Table.vue";
 import showTheNote from "../views/notes/Show.vue";
+import editTheNote from "../views/notes/Edit.vue";
 export default {
     mode: "history",
     linkActiveClass: "active",
@@ -35,9 +36,14 @@ export default {
             component: tableOfNote,
         },
         {
-            path: "/notes/:noteSlug/table",
+            path: "/notes/:noteSlug",
             name: "notes.show",
             component: showTheNote,
+        },
+        {
+            path: "/notes/:noteSlug/edit",
+            name: "notes.edit",
+            component: editTheNote,
         },
     ],
 };
