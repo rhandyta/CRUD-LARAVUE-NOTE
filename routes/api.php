@@ -22,6 +22,7 @@ Route::group([
     Route::post('create-new-note', [NoteController::class, 'store']);
     Route::get('{note:slug}', [NoteController::class, 'show'])->name('notes.show');
     Route::patch('{note:slug}/edit', [NoteController::class, 'update']);
+    Route::delete('{note:slug}/delete', [NoteController::class, 'destroy']);
 });
 Route::group(['prefix' => 'subjects'], function () {
     Route::get('', [SubjectController::class, 'index']);

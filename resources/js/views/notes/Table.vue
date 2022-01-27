@@ -26,12 +26,14 @@
                         <td>{{ note.published }}</td>
                         <td>
                             <router-link
+                                class="btn btn-success"
                                 :to="{
                                     name: 'notes.edit',
                                     params: { noteSlug: note.slug },
                                 }"
                                 >Edit</router-link
                             >
+                            <delete-note :endpoint="note.slug" />
                         </td>
                     </tr>
                 </tbody>
@@ -41,7 +43,11 @@
 </template>
 
 <script>
+import DeleteNote from "./Delete.vue";
 export default {
+    components: {
+        DeleteNote,
+    },
     data() {
         return {
             notes: [],
