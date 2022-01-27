@@ -23,6 +23,7 @@ class NoteController extends Controller
 
     public function store(Request $request)
     {
+        sleep(1);
         $request->validate([
             'title' => 'required',
             'subject' => 'required',
