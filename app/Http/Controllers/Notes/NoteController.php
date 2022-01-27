@@ -16,6 +16,11 @@ class NoteController extends Controller
         return NoteResouce::collection($notes);
     }
 
+    public function show(Note $note)
+    {
+        return NoteResouce::make($note);
+    }
+
     public function store(Request $request)
     {
         $request->validate([

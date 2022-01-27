@@ -17,10 +17,12 @@ class NoteResouce extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
+            'slug' => $this->slug,
             'subject' => $this->subject->name,
             'subjectId' => $this->subject->id,
             'description' => $this->description,
-            'published' => $this->created_at,
+            'published' => $this->created_at->format('d F, Y'),
+            'link' => route('notes.show', $this->slug),
         ];
     }
 }
